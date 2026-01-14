@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifesto - Portal de Minas</title>
+    <style>
+        /* ========== RESET E VARIÁVEIS ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --laranja: #f97316;
+            --vermelho: #ef4444;
+            --cinza-escuro: #1e293b;
+            --cinza-claro: #f8fafc;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #ffffff;
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        /* ========== HEADER ========== */
+        .topo {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--laranja), var(--vermelho));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .voltar {
+            color: #475569;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .voltar:hover {
+            border-color: var(--laranja);
+            color: var(--laranja);
+            transform: translateX(-3px);
+        }
+
+        /* ========== HERO MANIFESTO ========== */
+        .hero-manifesto {
+            margin-top: 80px;
+            padding: 100px 40px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--cinza-claro), #fff7ed);
+        }
+
+        .hero-manifesto h1 {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--cinza-escuro);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-manifesto .subtitulo {
+            font-size: 24px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .hero-manifesto .frase-destaque {
+            font-size: 28px;
+            font-style: italic;
+            color: var(--laranja);
+            font-weight: 600;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* ========== CONTEÚDO ========== */
+        .conteudo {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .introducao {
+            font-size: 22px;
+            color: #475569;
+            text-align: center;
+            margin-bottom: 80px;
+            line-height: 1.8;
+        }
+
+        .secao {
+            margin-bottom: 80px;
+        }
+
+        .secao h2 {
+            font-size: 36px;
+            color: var(--cinza-escuro);
+            margin-bottom: 24px;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .secao h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--laranja), var(--vermelho));
+            border-radius: 2px;
+        }
+
+        .secao p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .secao ul {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .secao ul li {
+            font-size: 18px;
+            color: #475569;
+            padding: 12px 0 12px 32px;
+            position: relative;
+        }
+
+        .secao ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--laranja);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* ========== DESTAQUE ========== */
+        .destaque-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(239, 68, 68, 0.1));
+            border-left: 4px solid var(--laranja);
+            padding: 32px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .destaque-box p {
+            font-size: 20px;
+            color: var(--cinza-escuro);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* ========== CTA FINAL ========== */
+        .cta-final {
+            background: linear-gradient(135deg, var(--cinza-escuro), #334155);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+            margin-top: 80px;
+        }
+
+        .cta-final h2 {
+            font-size: 42px;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .cta-final p {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .botao {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--laranja), var(--vermelho));
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .botao:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4);
+        }
+
+        /* ========== FOOTER ========== */
+        .rodape {
+            background: var(--cinza-escuro);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .rodape p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 768px) {
+            .topo {
+                flex-direction: column;
+                gap: 16px;
+                padding: 16px 20px;
+            }
+
+            .hero-manifesto h1 {
+                font-size: 36px;
+            }
+
+            .hero-manifesto .frase-destaque {
+                font-size: 20px;
+            }
+
+            .conteudo {
+                padding: 60px 20px;
+            }
+
+            .secao h2 {
+                font-size: 28px;
+            }
+
+            .secao p, .secao ul li {
+                font-size: 16px;
+            }
+
+            .cta-final h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="topo">
+    <div class="logo">
+        <h1>Portal de Minas</h1>
+    </div>
+    <a href="index.html" class="voltar">← Voltar ao início</a>
+</header>
+
+<!-- HERO -->
+<section class="hero-manifesto">
+    <h1>Manifesto do Portal de Minas</h1>
+    <p class="subtitulo">O guia completo para viver Minas Gerais</p>
+    <p class="frase-destaque">
+        "Minas Gerais não é apenas um destino. Minas é um estado de espírito."
+    </p>
+</section>
+
+<!-- CONTEÚDO -->
+<article class="conteudo">
+    <div class="introducao">
+        <p>Entre montanhas, cidades históricas, cozinhas que contam histórias, festas que atravessam séculos e experiências que não cabem em um roteiro apressado, Minas se revela a quem sabe olhar, ouvir e sentir.</p>
+        <p><strong>O Portal de Minas nasce para isso.</strong></p>
+        <p>Para reunir, organizar e valorizar tudo o que faz de Minas Gerais um dos territórios mais ricos do Brasil em cultura, turismo, gastronomia, hospitalidade e experiências.</p>
+    </div>
+
+    <!-- NOSSA RAZÃO DE EXISTIR -->
+    <div class="secao">
+        <h2>Nossa razão de existir</h2>
+        <p>Existem muitas informações sobre Minas espalhadas pela internet. Mas poucas estão organizadas. Menos ainda são curadas.</p>
+        <p>O Portal de Minas existe para ser:</p>
+        <ul>
+            <li>Um ponto de encontro entre quem quer conhecer Minas e quem vive Minas</li>
+            <li>Um guia confiável, construído por pessoas reais</li>
+            <li>Uma vitrine qualificada para cidades, experiências e negócios</li>
+        </ul>
+        <div class="destaque-box">
+            <p>Aqui, o turista encontra clareza. O empreendedor encontra visibilidade. E Minas encontra representação.</p>
+        </div>
+    </div>
+
+    <!-- O QUE ACREDITAMOS -->
+    <div class="secao">
+        <h2>O que acreditamos</h2>
+        <p>Acreditamos que:</p>
+        <ul>
+            <li>Minas vai muito além dos destinos óbvios</li>
+            <li>Cada cidade tem uma identidade única</li>
+            <li>Turismo de qualidade nasce da experiência, não da propaganda</li>
+            <li>Informação bem organizada gera valor</li>
+            <li>O conteúdo local precisa ser valorizado</li>
+            <li>Influenciadores, criadores e especialistas são parte da solução</li>
+        </ul>
+        <p>Acreditamos que é possível falar com todos os públicos, do viajante simples ao turista de alta renda, sem excluir ninguém — apenas oferecendo camadas diferentes de experiência.</p>
+    </div>
+
+    <!-- NOSSO COMPROMISSO -->
+    <div class="secao">
+        <h2>Nosso compromisso</h2>
+        <p>O Portal de Minas se compromete a:</p>
+        <ul>
+            <li>Centralizar informações relevantes sobre Minas Gerais</li>
+            <li>Oferecer conteúdo organizado, atualizado e acessível</li>
+            <li>Valorizar criadores de conteúdo, influenciadores e vozes locais</li>
+            <li>Promover experiências autênticas, do popular ao premium</li>
+            <li>Apoiar o desenvolvimento do turismo regional</li>
+            <li>Atuar com transparência editorial e comercial</li>
+        </ul>
+        <div class="destaque-box">
+            <p>Não somos um catálogo vazio. Não somos apenas um site de anúncios. Somos curadoria.</p>
+        </div>
+    </div>
+
+    <!-- COMO CONSTRUÍMOS -->
+    <div class="secao">
+        <h2>Como construímos o Portal de Minas</h2>
+        <p>O Portal de Minas é construído de forma colaborativa.</p>
+        <p>Reunimos:</p>
+        <ul>
+            <li>Influenciadores de viagem, gastronomia, vinhos, cultura e lifestyle</li>
+            <li>Fotógrafos, guias, chefs, produtores culturais</li>
+            <li>Comerciantes, hotéis, pousadas e atrativos turísticos</li>
+            <li>Prefeituras, eventos e iniciativas institucionais</li>
+        </ul>
+        <p>Cada conteúdo publicado aqui carrega identidade, autoria e propósito.</p>
+    </div>
+
+    <!-- PARA QUEM É -->
+    <div class="secao">
+        <h2>Para quem é o Portal de Minas</h2>
+        <p>O Portal de Minas é para:</p>
+        <ul>
+            <li>Quem quer viajar por Minas Gerais</li>
+            <li>Quem busca experiências autênticas</li>
+            <li>Quem valoriza cultura, gastronomia e história</li>
+            <li>Quem procura desde opções acessíveis até vivências exclusivas</li>
+            <li>Quem vive do turismo e precisa ser encontrado</li>
+            <li>Quem acredita no potencial de Minas</li>
+        </ul>
+    </div>
+
+    <!-- FUTURO -->
+    <div class="secao">
+        <h2>Nosso olhar para o futuro</h2>
+        <p>Começamos pequenos. Com cuidado. Com critério.</p>
+        <p>Mas com uma visão clara:</p>
+        <div class="destaque-box">
+            <p>Ser o principal portal de referência sobre Minas Gerais. Um lugar onde Minas é vivida, não apenas visitada.</p>
+        </div>
+    </div>
+</article>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+    <h2>Viva Minas conosco</h2>
+    <p>Explore cidades, experiências, gastronomia e cultura de Minas Gerais</p>
+    <a href="index.html" class="botao">Comece sua jornada</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="rodape">
+    <p><strong>Portal de Minas</strong></p>
+    <p>O guia completo para viver Minas Gerais</p>
+    <p>© 2026 - Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
